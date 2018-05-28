@@ -20,6 +20,26 @@ set $mod Mod4
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
 
+# Set colors from Xresources
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources for some reason.
+set_from_resource $c0 i3wm.color0 #f0f0f0
+set_from_resource $c1 i3wm.color1 #f0f0f0
+set_from_resource $c2 i3wm.color2 #f0f0f0
+set_from_resource $c3 i3wm.color3 #f0f0f0
+set_from_resource $c4 i3wm.color4 #f0f0f0
+set_from_resource $c5 i3wm.color5 #f0f0f0
+set_from_resource $c6 i3wm.color6 #f0f0f0
+set_from_resource $c7 i3wm.color7 #f0f0f0
+set_from_resource $c8 i3wm.color8 #f0f0f0
+set_from_resource $c9 i3wm.color9 #f0f0f0
+set_from_resource $c10 i3wm.color10 #f0f0f0
+set_from_resource $c11 i3wm.color11 #f0f0f0
+set_from_resource $c12 i3wm.color12 #f0f0f0
+set_from_resource $c13 i3wm.color13 #f0f0f0
+set_from_resource $c14 i3wm.color14 #f0f0f0
+set_from_resource $c15 i3wm.color15 #f0f0f0
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -38,11 +58,11 @@ bindsym $mod+Shift+a kill
 bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec sh $HOME/.i3/configrofi.sh
 # This is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed. Here is the normal one:
-bindsym $mod+shift+d exec dmenu_run
+#bindsym $mod+shift+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 #gaps
 gaps inner 7
@@ -197,51 +217,42 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "defaulti"; exec echo "mode: default" > $HOME/.i3/mode
+        bindsym Escape mode "default"; exec echo "mode: default" > $HOME/.i3/mode
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"; exec echo "mode: resize" > $HOME/.i3/mode
 
-# Set colors from Xresources
-# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
-# it fails to get colors from Xresources for some reason.
-set_from_resource $fg i3wm.color4 #f0f0f0
-set_from_resource $bg i3wm.color0 #f0f0f0
-set_from_resource $ib i3wm.color1 #f0f0f0
-set_from_resource $abg i3wm.color3 #f0f0f0
-set_from_resource $afg i3wm.color0 #f0f0f0
-set_from_resource $ubg i3wm.color7 #f0f0f0
-set_from_resource $ufg i3wm.color0 #f0f0f0
-
-# class                 border  backgr. text indicator child_border
-client.focused          $abg    $abg    $afg $abg      $abg
-client.focused_inactive $ib     $bg     $fg  $ib       $ib
-client.unfocused        $ib     $bg     $fg  $ib       $ib
-client.urgent           $ubg    $ubg    $ufg $bg       $bg
+# class                 border  backgr. text 	indicator child_border
+client.focused          $c0    	$c0	$c4	$c15      $c0
+client.focused_inactive $c0     $c0     $c4  	$c15      $c0
+client.unfocused        $c0     $c0     $c3  	$c15      $c0
+client.urgent           $c0    	$c0    	$c11 	$c15      $c0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-	font pango: MaterialDesignIcons 11
-
-	colors {
-		set $bg-color 	         #2f343f
-		set $inactive-bg-color   #2f343f
-		set $text-color          #f3f4f5
-		set $inactive-text-color #676E7D
-		set $urgent-bg-color 	 #E53935
-		
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-	position top
-}
+#bar {
+#		SETUP FOR THE NORMAL STATUS BAR
+#
+#        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+#	font pango: MaterialDesignIcons 11
+#
+#	colors {
+#		set $bg-color 	         #2f343f
+#		set $inactive-bg-color   #2f343f
+#		set $text-color          #f3f4f5
+#		set $inactive-text-color #676E7D
+#		set $urgent-bg-color 	 #E53935
+#				
+#		background $bg-color
+#	    	separator #757575
+#		#                  border             background         text
+#		focused_workspace  $bg-color          $bg-color          $text-color
+#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#	}
+#	position top
+#}
 
 
 # Pulse Audio controls
@@ -270,7 +281,7 @@ bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
 bindsym Mod1+l exec $HOME/.i3/locks.sh
 
 #wallpaper
-exec_always feh --bg-scale ~/Pictures/zombie_unseen.jpg
+exec_always feh --bg-scale $(cut -d\' -f6 ~/.fehbg | sed -n 2p)
 
 # disable window titlebars
 for_window [class="^.*"] border pixel 0
@@ -281,3 +292,9 @@ bindsym $mod+b border pixel 4
 exec_always numlockx on
 exec_always compton -f
 exec sudo /etc/visudo/backlight.sh -res ~/.i3/backlight.prev
+exec xrdb $HOME/.Xresources
+	#kill the previons lemonbar and start a new one (when the computer strats, copton doesn't work, need to restart i3)
+exec_always sleep 2; killall lemonbar; $HOME/.config/i3/lemonbar.sh
+
+#easier way for mode detection than with the echo methode
+#exec python3 $HOME/.i3/mode.py
