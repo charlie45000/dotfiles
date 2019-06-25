@@ -1,0 +1,19 @@
+! 				Separator style (none, dash, solid)
+rofi.separator-style:		dash
+rofi.eh:			2
+rofi.font:			DejaVu Sans 12
+rofi.monitor:			-1
+rofi.location:			2
+rofi.columns:			1	
+rofi.lines:			5
+rofi.width:			40
+
+#define rofbg			D0000000
+!				bg,		fg,	bgalt,		hlbg,		hlfg
+rofi.color-normal:		transparent,	#dwh,	transparent,	transparent,	#drd
+rofi.color-urgent:		transparent,	#dyw,	transparent,	transparent,	#drd
+rofi.color-active:		transparent,	#lbl,	transparent,	transparent,	#drd
+
+!				bg,	bord,	sep
+rofi.color-window:		#rofbg,	#back,	#lbk
+

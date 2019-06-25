@@ -1,0 +1,12 @@
+bar.font:		-xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1
+bar.iconfont:		-xos4-terminusicons2mono-medium-r-normal--12-120-72-72-m-60-iso8859-1
+
+bar.geometry:		x14
+
+bar.alret_cpu:		75
+bar.alert_net:		5
+
+bar.timer_default:	1
+bar.timer_vol:		3
+bar.timer_mail:		300
+
