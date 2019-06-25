@@ -1,0 +1,27 @@
+URxvt.scrollBar:      		false
+! 				You might need to change that
+URxvt.url-launcher:		/home/m0rth0n/.scripts/handlelink
+URxvt*loginShell:		true
+URxvt*fading:			20
+URxvt.internalBorder:		0
+URxvt.externalBorder:		0
+URxvt.blurRadius: 		10
+URxvt.transparent: 		true
+URxvt.shading: 			65
+
+URxvt.depth:			32
+!URxvt.background:		[40]#back
+
+URxvt.secondaryScreen:		1
+URxvt.secondaryScroll:		0
+
+URxvt.perl-ext-common:		default,matcher,resize-font
+URxvt.matcher.button:		1
+!				Resize font in URxvt
+URxvt.resize-font.smaller:	C-j
+URxvt.resize-font.bigger:	C-k
+URxvt.iso14755:			False
+URxvt.keysym.Shift-Control-C:	perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:	perl:clipboard:paste
+URxvt.clipboard.copycmd: 	xsel -ib
+URxvt.clipboard.pastecmd:	xsel -ob

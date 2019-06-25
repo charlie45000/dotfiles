@@ -1,0 +1,23 @@
+#define back 			000000
+#define fore 			c0c0c0
+#define fade 			000000
+#define curs 			808080
+#define pbak 			000000
+#define pfor 			ffffff
+
+#define dbk			000000
+#define lbk			333333
+#define drd			c00000
+#define lrd			ff0000
+#define dgr			00c000
+#define lgr			00ff00
+#define dyw			c0c000
+#define lyw			ffff00
+#define dbl			0000c0
+#define lbl			003bff
+#define dmg			c000c0
+#define lmg			ff00ff
+#define dcy			00c0c0
+#define lcy			00ffff
+#define dwh			a0a0a0
+#define lwh			ffffff
