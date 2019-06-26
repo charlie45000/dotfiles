@@ -12,7 +12,7 @@
 
 *.font:           		xft:Liberation Mono for Powerline:size=11
 
-! Default colors configuration. I use wal, so none of these actually matter.
+! Default colors configuration.
 
 *.background:			#back
 *.foreground:			#fore
