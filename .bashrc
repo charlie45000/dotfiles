@@ -6,6 +6,10 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+
+#i3 config env var
+export I3C="$HOME/.config/i3"
+
 #alias for git config
 alias wmc='cd $HOME/.config/i3'
 

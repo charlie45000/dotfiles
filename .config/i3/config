@@ -185,11 +185,11 @@ bindsym $mod+mod1+Up move workspace to output up
 bindsym $mod+mod1+Down move workspace to output down
 
 #workspace assignement
-assign [class="Firefox"] $workspace2
+assign [class="firefox"] $workspace2
 #assign [class="Gnome-terminal"] $workspace3
 #assign [class="Rhythmbox"] $workspace10
-#assign [class="discord"] $workspace9
-#assign [class="Spotify"] $workspace10
+assign [class="discord"] $workspace9
+assign [class="Spotify"] $workspace10
 
 #startup applications
 exec gtk-launch discord_discord.desktop /var/lib/snapd/desktop/applications/
