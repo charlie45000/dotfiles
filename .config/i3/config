@@ -190,6 +190,7 @@ assign [class="firefox"] $workspace2
 #assign [class="Rhythmbox"] $workspace10
 assign [class="discord"] $workspace9
 assign [class="Spotify"] $workspace10
+assign [class="vlc"] $workspace10
 
 #startup applications
 exec gtk-launch discord_discord.desktop /var/lib/snapd/desktop/applications/
