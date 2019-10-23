@@ -307,7 +307,7 @@ focus_on_window_activation urgent
 exec_always numlockx on
 exec_always compton -f
 exec xrdb $HOME/.Xresources
-exec_always xset -b -dpms
+exec_always xset -b -dpms  +fp $HOME/.fonts/,$HOME/.fonts/misc/,$HOME/.fonts/ohsnap/,$HOME/.fonts/tewi,$HOME/.fonts/terminesspowerline/
 	
 bar {
 #        status_command i3status
