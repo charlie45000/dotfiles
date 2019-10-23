@@ -22,7 +22,7 @@ complete -F _git config
 PS1='[\u@\h \W]\$ '
 
 #source for auto completion:
-source /usr/share/bash-completion/git-flow-completion.bash
+source /etc/bash_completion.d/git-flow-completion.bash
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/bash-completion/bash_completion
 
