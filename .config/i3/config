@@ -43,7 +43,6 @@ set $tr1 #00000079
 set $tr2 #000000A9
 set $tr3 #000000A9
 
-set $conf $HOME/.config/i3
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -205,11 +204,11 @@ bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #shutdown options:
-bindsym $mod+Shift+e exec $conf/shutdown.sh
+bindsym $mod+Shift+e exec $I3C/shutdown.sh
 
 #extinction/restart
-bindsym Mod1+control+e exec sh $conf/shutdown_def.sh -P now
-bindsym Mod1+control+r exec sh $conf/shutdown_def.sh -r now
+bindsym Mod1+control+e exec sh $I3C/shutdown_def.sh -P now
+bindsym Mod1+control+r exec sh $I3C/shutdown_def.sh -r now
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -289,10 +288,10 @@ bindsym mod1+j exec playerctl previous
 bindsym mod1+shift+j exec playerctl --player=spotify previous 
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec $conf/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec $I3C/toggletouchpad.sh # toggle touchpad
 
 #lock screen
-bindsym Mod1+l exec $conf/locks.sh
+bindsym Mod1+l exec $I3C/lock.sh
 
 #wallpaper
 exec_always feh --bg-scale $(cut -d\' -f2 ~/.fehbg | sed -n 2p)
@@ -311,5 +310,5 @@ exec_always xset -b -dpms  +fp $HOME/.fonts/,$HOME/.fonts/misc/,$HOME/.fonts/ohs
 	
 bar {
 #        status_command i3status
-	 i3bar_command $conf/lemonbar/i3_lemonbar.py
+	 i3bar_command $I3C/lemonbar/i3_lemonbar.py
 }
