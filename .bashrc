@@ -17,6 +17,10 @@ alias wmc='cd $HOME/.config/i3'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 complete -F _git config
 
+#sudo completion and editing
+complete -cf sudo
+alias visudo="sudo -E visudo"
+
 #alias nordvpnr='nordvpn d; nordvpn c'
 
 PS1='[\u@\h \W]\$ '
