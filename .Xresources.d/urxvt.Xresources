@@ -1,6 +1,7 @@
 URxvt.scrollBar:      		false
+URxvt.perl-lib:			home/.config/urxvt/ext
 ! 				You might need to change that
-URxvt.url-launcher:		/home/m0rth0n/.scripts/handlelink
+!URxvt.url-launcher:		home/.scripts/handlelink
 URxvt*loginShell:		true
 URxvt*fading:			20
 URxvt.internalBorder:		0
@@ -18,8 +19,10 @@ URxvt.secondaryScroll:		0
 URxvt.perl-ext-common:		default,matcher,resize-font
 URxvt.matcher.button:		1
 !				Resize font in URxvt
-URxvt.resize-font.smaller:	C-j
-URxvt.resize-font.bigger:	C-k
+URxvt.keysym.C-KP_Add:		resize-font:bigger
+URxvt.keysym.C-KP_Subtract:	resize-font:smaller
+URxvt.keysym.C-End:		resize-font:reset
+
 URxvt.iso14755:			False
 URxvt.keysym.Shift-Control-C:	perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:	perl:clipboard:paste
