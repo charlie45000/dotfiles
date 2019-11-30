@@ -131,6 +131,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+q focus parent
 
+# open root terminal
+bindsym $mod+shift+t exec urxvt --role 'floating_urxvt' for_window [window_role='floating_urxvt$'] floating enable
+
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -185,7 +188,6 @@ bindsym $mod+mod1+Down move workspace to output down
 
 #workspace assignement
 assign [class="firefox"] $workspace2
-#assign [class="Gnome-terminal"] $workspace3
 #assign [class="Rhythmbox"] $workspace10
 assign [class="discord"] $workspace9
 assign [class="Spotify"] $workspace10
@@ -269,9 +271,9 @@ client.urgent           $tr1    $tr2    $c01 	$tr1    	$tr1
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
@@ -291,7 +293,7 @@ bindsym mod1+shift+j exec playerctl --player=spotify previous
 bindsym XF86TouchpadToggle exec $I3C/toggletouchpad.sh # toggle touchpad
 
 #lock screen
-bindsym Mod1+l exec $I3C/lock.sh
+bindsym Mod1+l exec $I3C/lock.sh > /tmp/lockauto.log
 
 #wallpaper
 exec_always feh --bg-scale $(cut -d\' -f2 ~/.fehbg | sed -n 2p)
