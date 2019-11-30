@@ -1,3 +1,4 @@
+!colors
 #define back 			000000
 #define fore 			c0c0c0
 #define fade 			000000
@@ -21,3 +22,6 @@
 #define lcy			00ffff
 #define dwh			a0a0a0
 #define lwh			ffffff
+
+!home (change it with your own)
+#define home			/home/paul
