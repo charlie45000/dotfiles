@@ -23,7 +23,13 @@ alias visudo="sudo -E visudo"
 
 #alias nordvpnr='nordvpn d; nordvpn c'
 
-PS1='[\u@\h \W]\$ '
+
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1="[\u@\h \W]\$(git_branch)\$ "
+#PS1='[\u@\h \W]\$ '
 
 #source for auto completion:
 source /etc/bash_completion.d/git-flow-completion.bash
