@@ -37,10 +37,11 @@ source /usr/share/git/completion/git-completion.bash
 source /usr/share/bash-completion/bash_completion
 
 #stderr color
-export COLOR_RED="$(tput setaf 160)"
-export COLOR_RESET="$(tput sgr0)"
+#export COLOR_RED="$(tput setaf 160)"
+#export COLOR_RESET="$(tput sgr0)"
 
 #export LD_PRELOAD="/usr/local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+export LD_PRELOAD="$HOME/.local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 
 colorize ()
 {
@@ -55,13 +56,13 @@ colorize ()
 }
 
 
-exec 9>&2
-exec 8> >(colorize)
-#exec 8> >(sed -u "s/^/\o033[31m/; s/\$/\o033[0m/")
-function undirect(){ exec 2>&9; }
-function redirect(){ exec 2>&8; }
-trap "redirect" DEBUG
-PROMPT_COMMAND='undirect'
+#exec 9>&2
+#exec 8> >(colorize)
+##exec 8> >(sed -u "s/^/\o033[31m/; s/\$/\o033[0m/")
+#function undirect(){ exec 2>&9; }
+#function redirect(){ exec 2>&8; }
+#trap "redirect" DEBUG
+#PROMPT_COMMAND='undirect'
 
 su_cmd ()
 {
