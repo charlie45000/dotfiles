@@ -6,6 +6,10 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias SS='sudo systemctl'
+alias SP='sudo pacman'
+alias urxvt='export LD_PRELOAD=;PROMPT_COMMAND="POMPT_COMMAND=;LD_PRELOAD=$HOME/.local/lib/libstderred.so";urxvt'
 
 #i3 config env var
 export I3C="$HOME/.config/i3"
@@ -40,4 +44,4 @@ source /usr/share/git/completion/git-completion.bash
 source /usr/share/bash-completion/bash_completion
 
 #stderr color
-export LD_PRELOAD="$HOME/.local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+#export LD_PRELOAD="$HOME/.local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
