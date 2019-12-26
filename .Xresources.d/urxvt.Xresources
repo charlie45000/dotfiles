@@ -1,7 +1,6 @@
 URxvt.scrollBar:      		false
 URxvt.perl-lib:			home/.config/urxvt/ext
-! 				You might need to change that
-!URxvt.url-launcher:		home/.scripts/handlelink
+URxvt.url-launcher:		home/.config/urxvt/handlelink.sh
 URxvt*loginShell:		true
 URxvt*fading:			20
 URxvt.internalBorder:		0
