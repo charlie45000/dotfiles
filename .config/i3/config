@@ -186,6 +186,11 @@ bindsym $mod+mod1+Right move workspace to output right
 bindsym $mod+mod1+Up move workspace to output up
 bindsym $mod+mod1+Down move workspace to output down
 
+#move to custom workspace
+bindsym $mod+w exec $I3C/more-wksp.sh go
+bindsym $mod+Shift+w exec $I3C/more-wksp.sh move
+bindsym $mod+Mod1+w exec $I3C/more-wksp.sh move-go
+
 #workspace assignement
 assign [class="firefox"] $workspace2
 #assign [class="Rhythmbox"] $workspace10
@@ -194,9 +199,9 @@ assign [class="Spotify"] $workspace10
 assign [class="vlc"] $workspace10
 
 #startup applications
-exec gtk-launch discord_discord.desktop /var/lib/snapd/desktop/applications/
-#exec rhythmbox
-exec firefox
+#exec gtk-launch discord.desktop
+#exec discord
+#exec firefox
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -296,7 +301,8 @@ bindsym XF86TouchpadToggle exec $I3C/toggletouchpad.sh # toggle touchpad
 bindsym Mod1+l exec $I3C/lock.sh > /tmp/lockauto.log
 
 #wallpaper
-exec_always feh --bg-scale $(cut -d\' -f2 ~/.fehbg | sed -n 2p)
+#exec_always feh --bg-fill $(cut -d\' -f2 ~/.fehbg | sed -n 2p)
+exec_always eval $HOME/.fehbg
 
 # disable window titlebars
 for_window [class="^.*"] border pixel 2 
