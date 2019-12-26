@@ -1,0 +1,5 @@
+#!/bin/sh
+
+([ -n "$1" ] && addr="$1") || addr="$SEARCH_ENGINE"
+tabbed -cr2 surf -e xid "$addr" > /tmp/surf-tabbed.xid 2>/dev/null
+rm /tmp/surf-tabbed.xid
