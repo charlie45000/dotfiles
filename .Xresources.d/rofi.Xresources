@@ -18,6 +18,6 @@ rofi.color-active:		transparent,	#lbl,	transparent,	transparent,	#drd
 rofi.color-window:		#rofbg,	#back,	#lbk
 
 !				general configuration:
-rofi.cache-dir:			home/.cache
+rofi.cache-dir:			home/.cache/rofi
 rofi.max-history-size:		50
 
