@@ -202,6 +202,7 @@ assign [class="vlc"] $workspace10
 #exec gtk-launch discord.desktop
 #exec discord
 #exec firefox
+exec dunst
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
