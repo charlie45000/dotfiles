@@ -5,6 +5,21 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#show hex color in terminal
+hextoterm() {
+	for C in $@; do
+		C=${C/\#/}
+		#printf '\e]4;%d;%s\a\e[48;5;%dm %s ' "$#" "$C" "$#" "$C"	#without true color support, cause term colors to be permanently alterred
+		#shift								#
+		R=$((16#${C::2}))
+		G=$((16#${C:2:2}))
+		B=$((16#${C:4:2}))
+		printf '\e[48;2;%d;%d;%d;30m #%s ' $R $G $B "$C"	
+	done
+	printf "\e[m\n"
+	#tput oc
+}
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias SS='sudo systemctl'
