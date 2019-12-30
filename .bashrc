@@ -60,3 +60,6 @@ source /usr/share/bash-completion/bash_completion
 
 #stderr color
 #export LD_PRELOAD="$HOME/.local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
+
+#move vim to .config dir
+export VIMINIT="source ~/.config/vim/vimrc"

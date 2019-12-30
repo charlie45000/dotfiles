@@ -1,0 +1,291 @@
+# Ce fichier viminfo a été généré par Vim 8.1.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# Viminfo version
+|1,4
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Dernier motif de recherche  :
+~MSle0~/VIMRC
+
+# Historique ligne de commande (chronologie décroissante) :
+:q
+|2,0,1577749439,,"q"
+:q!
+|2,0,1577748334,,"q!"
+:wq
+|2,0,1577748244,,"wq"
+
+# Historique chaîne de recherche (chronologie décroissante) :
+?/VIMRC
+|2,1,1577748371,47,"VIMRC"
+?/:q
+|2,1,1577748352,47,":q"
+?/vimrc
+|2,1,1577748088,47,"vimrc"
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique Ligne de débogage (chronologie décroissante) :
+
+# Registres :
+""-	CHAR	0
+	/
+|3,1,36,0,1,0,1577748230,"/"
+
+# Marques dans le fichier :
+'0  1  0  ~/.bashrc
+|4,48,1,0,1577749439,"~/.bashrc"
+'1  24  0  ~/.src/vim/Makefile
+|4,49,24,0,1577748372,"~/.src/vim/Makefile"
+'2  268  28  ~/.src/vim/src/os_unix.h
+|4,50,268,28,1577748359,"~/.src/vim/src/os_unix.h"
+'3  24  0  ~/.src/vim/Makefile
+|4,51,24,0,1577748355,"~/.src/vim/Makefile"
+'4  268  28  ~/.src/vim/src/os_unix.h
+|4,52,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+'5  264  6  ~/.src/vim/src/os_unix.h
+|4,53,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+'6  264  6  ~/.src/vim/src/os_unix.h
+|4,54,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+'7  264  6  ~/.src/vim/src/os_unix.h
+|4,55,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+'8  264  6  ~/.src/vim/src/os_unix.h
+|4,56,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+'9  264  8  ~/.src/vim/src/os_unix.h
+|4,57,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+
+# Liste de sauts (le plus récent en premier) :
+-'  1  0  ~/.bashrc
+|4,39,1,0,1577749439,"~/.bashrc"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748372,"~/.src/vim/Makefile"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748372,"~/.src/vim/Makefile"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748359,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748359,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748359,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748359,"~/.src/vim/src/os_unix.h"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748355,"~/.src/vim/Makefile"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748355,"~/.src/vim/Makefile"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748355,"~/.src/vim/Makefile"
+-'  24  0  ~/.src/vim/Makefile
+|4,39,24,0,1577748355,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  1  0  ~/.src/vim/Makefile
+|4,39,1,0,1577748343,"~/.src/vim/Makefile"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  268  28  ~/.src/vim/src/os_unix.h
+|4,39,268,28,1577748334,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748268,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  6  ~/.src/vim/src/os_unix.h
+|4,39,264,6,1577748244,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  264  8  ~/.src/vim/src/os_unix.h
+|4,39,264,8,1577748151,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  261  37  ~/.src/vim/src/os_unix.h
+|4,39,261,37,1577748101,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+-'  220  32  ~/.src/vim/src/os_unix.h
+|4,39,220,32,1577748090,"~/.src/vim/src/os_unix.h"
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/.bashrc
+	*	1577749437	0
+	"	1	0
+
+> ~/.src/vim/Makefile
+	*	1577748371	0
+	"	24	0
+
+> ~/.src/vim/src/os_unix.h
+	*	1577748356	0
+	"	268	28
+	^	268	29
+	.	268	29
+	+	262	1
+	+	263	39
+	+	264	8
+	+	262	0
+	+	264	6
+	+	268	29
+
+> ~/.vimrc
+	*	1577748047	0
+	"	36	15
