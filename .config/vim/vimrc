@@ -188,4 +188,8 @@ endfunction
 
 au BufReadPost *.Xresources set syntax=xdefaults
 
+"auto cmd on file write
+autocmd BufWritePost *Xresources 	!xrdb ~/.Xresources
+autocmd BufWritePost *dunstrc		!dunstd restart
+
 
