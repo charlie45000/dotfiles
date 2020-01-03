@@ -10,45 +10,45 @@
 ! Defauts for lemonbar (used by custom prog)
 #include ".Xresources.d/bar.Xresources"
 
-*.font:           		xft:Liberation Mono for Powerline:size=11
+*font:           		xft:Liberation Mono for Powerline:size=11
 
 ! Default colors configuration.
 
-*.background:			#back
-*.foreground:			#fore
-*.fadeColor:             	#fade
-*.cursorColor:           	#curs
-*.pointerColorBackground:	#pbak
-*.pointerColorForeground:	#pfor
+*background:			#back
+*foreground:			#fore
+*fadeColor:             	#fade
+*cursorColor:           	#curs
+*pointerColorBackground:	#pbak
+*pointerColorForeground:	#pfor
 
 !! black dark/light
-*.color0:                	#dbk
-*.color8:                	#lbk
+*color0:                	#dbk
+*color8:                	#lbk
 
 !! red dark/light
-*.color1:                	#drd
-*.color9:                	#lrd
+*color1:                	#drd
+*color9:                	#lrd
 
 !! green dark/light
-*.color2:                	#dgr
-*.color10:               	#lgr
+*color2:                	#dgr
+*color10:               	#lgr
 
 !! yellow dark/light
-*.color3:                	#dyw
-*.color11:               	#lyw
+*color3:                	#dyw
+*color11:               	#lyw
 
 !! blue dark/light
-*.color4:                	#dbl
-*.color12:               	#lbl
+*color4:                	#dbl
+*color12:               	#lbl
 
 !! magenta dark/light
-*.color5:                	#dmg
-*.color13:               	#lmg
+*color5:                	#dmg
+*color13:               	#lmg
 
 !! cyan dark/light
-*.color6:                	#dcy	
-*.color14:               	#lcy
+*color6:                	#dcy	
+*color14:               	#lcy
 
 !! white dark/light
-*.color7:                	#dwh
-*.color15: 			#lwh
+*color7:                	#dwh
+*color15: 			#lwh
