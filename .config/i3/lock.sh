@@ -1,8 +1,6 @@
 #!/bin/sh
-#exec 1>&/tmp/test.log
 icon="$I3C/lock.png"
 tmpbg='/tmp/screen.png'
-
 
 awk="
 BEGIN {
@@ -13,8 +11,8 @@ BEGIN {
 	split(\$3, screen, \"/\");
 	split(screen[3], offset, \"+\");
 	split(screen[2], y, \"x\");
-	x_i = offset[2]+screen[1]/2;
-	y_i = offset[3]+y[2]/2;
+	x_i = offset[2]+screen[1]/2
+	y_i = offset[3]+y[2]/2
 	if(!dup[x_i, y_i]++){
 		center[i, 1] = x_i;
 		center[i, 2] = y_i;
@@ -31,15 +29,12 @@ END {
 	for(j=1;j<i;j++){
 		x_i = center[j, 1]-lock[1]/2;
 		y_i = center[j, 2]-lock[2]/2;
-		convert = convert \"convert \" tmpbg \" \" icon \" -geometry +\" x_i \"+\" y_i \" -composite -matte \" tmpbg \";\";
+		convert = convert \" \" icon \" -geometry +\" x_i \"+\" y_i \" -composite -matte\";
 	}
 	print convert;
 }
 "
 scrot -o "$tmpbg"
-convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
-result=$( (xrandr --listactivemonitors && identify "$I3C"/lock.png) | awk -v icon="$icon" -v tmpbg="$tmpbg" "$awk")
-eval "$result"
+result=$( (xrandr --listactivemonitors && identify "$I3C"/lock.png) | awk -v icon="$icon" "$awk")
+eval "convert $tmpbg -scale 10% -scale 1000% $result $tmpbg"
 [ "$1" != "--dryrun" ] && i3lock -i "$tmpbg"
-	
-
