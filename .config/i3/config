@@ -85,10 +85,10 @@ bindsym $mod+KP_Add gaps inner current plus 5
 bindsym $mod+KP_Subtract gaps inner current minus 5
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -97,10 +97,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -109,7 +109,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -131,7 +131,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+q focus parent
 
-# open root terminal
+# open root terminal (not working, not finished)d
 bindsym $mod+shift+t exec urxvt --role 'floating_urxvt' for_window [window_role='floating_urxvt$'] floating enable
 
 # focus the child container
@@ -186,8 +186,14 @@ bindsym $mod+mod1+Right move workspace to output right
 bindsym $mod+mod1+Up move workspace to output up
 bindsym $mod+mod1+Down move workspace to output down
 
+bindsym $mod+mod1+h move workspace to output left
+bindsym $mod+mod1+l move workspace to output right
+bindsym $mod+mod1+k move workspace to output up
+bindsym $mod+mod1+j move workspace to output down
+
 #move to custom workspace
 bindsym $mod+w exec $I3C/more-wksp.sh go
+bindsym Mod1+control+Tab exec $I3C/more-wksp.sh go
 bindsym $mod+Shift+w exec $I3C/more-wksp.sh move
 bindsym $mod+Mod1+w exec $I3C/more-wksp.sh move-go
 
@@ -198,11 +204,15 @@ assign [class="discord"] $workspace9
 assign [class="Spotify"] $workspace10
 assign [class="vlc"] $workspace10
 
+#x display manager
+for_window [class="Arandr"] floating enable, resize set height 500px, resize set width 1000px, move position center
+bindsym $mod+p exec arandr
+
 #startup applications
 #exec gtk-launch discord.desktop
 #exec discord
 #exec firefox
-exec dunst
+exec dunstd start
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -215,8 +225,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec $I3C/shutdown.sh
 
 #extinction/restart
-bindsym Mod1+control+e exec sh $I3C/shutdown_def.sh -P now
-bindsym Mod1+control+r exec sh $I3C/shutdown_def.sh -r now
+#bindsym Mod1+control+e exec sh $I3C/shutdown_def.sh -P now
+#bindsym Mod1+control+r exec sh $I3C/shutdown_def.sh -r now
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -226,10 +236,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym m resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
