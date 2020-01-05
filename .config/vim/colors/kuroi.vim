@@ -53,6 +53,7 @@ let s:palette.gui.darkblue     = { 'dark' : "#00005f"        , 'light' : "#d7ffd
 let s:palette.gui.darkcyan     = { 'dark' : "#005f5f"        , 'light' : "#005f00" }
 let s:palette.gui.darkred      = { 'dark' : "#5f0000"        , 'light' : "#d7d7ff" }
 let s:palette.gui.darkpurple   = { 'dark' : "#5f005f"        , 'light' : "#5f005f" }
+let s:palette.gui.darkorange   = { 'dark' : "#875f00"        , 'light' : "#875f00" }
 let s:palette.gui.gray         = { 'dark' : "#262626"        , 'light' : "#d0d0d0" }
 let s:palette.gui.statusline   = { 'dark' : "#6c6c6c"        , 'light' : "#585858" }
 let s:palette.gui.statuslinenc = { 'dark' : "#4e4e4e"        , 'light' : "#3a3a3a"  }
@@ -90,6 +91,7 @@ let s:palette.cterm.darkblue     = { 'dark' : "17"               , 'light' : "19
 let s:palette.cterm.darkcyan     = { 'dark' : "24"               , 'light' : "22"  }
 let s:palette.cterm.darkred      = { 'dark' : "52"               , 'light' : "189" }
 let s:palette.cterm.darkpurple   = { 'dark' : "53"               , 'light' : "53"  }
+let s:palette.cterm.darkorange   = { 'dark' : "94"               , 'light' : "94"  }
 let s:palette.cterm.gray         = { 'dark' : "235"              , 'light' : "252"  }
 let s:palette.cterm.statusline   = { 'dark' : "242"              , 'light' : "240"  }
 let s:palette.cterm.statuslinenc = { 'dark' : "239"              , 'light' : "237"  }
@@ -117,7 +119,7 @@ function! s:build_prim(hi_elem, field)
   " Given a:hi_elem = bg, a:field = comment
   let l:vname = "s:" . a:hi_elem . "_" . a:field " s:bg_comment
   let l:gui_assign = "gui".a:hi_elem."=".s:palette.gui[a:field][s:style] " guibg=...
-  let l:cterm_assign = "cterm".a:hi_elem."=".s:palette.cterm[a:field][s:style] " ctermbg=...
+  let l:cterm_assign = "cterm".a:hi_elem."=".s:palette.cterm[a:field][s:style] " #5f005f#5f005f
   exe "let " . l:vname . " = ' " . l:gui_assign . " " . l:cterm_assign . "'"
 endfunction
 
@@ -146,6 +148,7 @@ call s:build_prim('bg', 'darkblue')
 call s:build_prim('bg', 'darkcyan')
 call s:build_prim('bg', 'darkred')
 call s:build_prim('bg', 'darkpurple')
+call s:build_prim('bg', 'darkorange')
 call s:build_prim('bg', 'statusline')
 call s:build_prim('bg', 'statuslinenc')
 
@@ -173,6 +176,7 @@ call s:build_prim('fg', 'darkblue')
 call s:build_prim('fg', 'darkcyan')
 call s:build_prim('fg', 'darkred')
 call s:build_prim('fg', 'darkpurple')
+call s:build_prim('fg', 'darkorange')
 call s:build_prim('fg', 'gray')
 call s:build_prim('fg', 'gitgutteradd')
 call s:build_prim('fg', 'gitgutterchg')
@@ -234,7 +238,7 @@ exe "hi! Folded"        .s:fg_comment     .s:bg_darkcolumn  .s:fmt_none
 exe "hi! FoldColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 exe "hi! SignColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 "   Incsearch"
-exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! LineNr"        .s:fg_darkorange  .s:bg_none        .s:fmt_bold
 exe "hi! CursorLineNr"  .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! MatchParen"    .s:fg_background  .s:bg_changebg    .s:fmt_none
 exe "hi! ModeMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
@@ -322,7 +326,7 @@ exe "hi! Todo"            .s:fg_yellow	    .s:bg_none	      .s:fmt_undb
 exe "hi! Todoline"        .s:fg_yellow	    .s:bg_none        .s:fmt_undr
 
 " Quickfix window highlighting
-exe "hi! qfLineNr"        .s:fg_yellow      .s:bg_none        .s:fmt_none
+"exe "hi! qfLineNr"        .s:fg_yellow      .s:bg_none        .s:fmt_none
 "   qfFileName"
 "   qfLineNr"
 "   qfError"

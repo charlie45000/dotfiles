@@ -139,7 +139,7 @@ endif
 
 colorscheme kuroi
 set background=dark
-
+set number relativenumber
 set clipboard=unnamedplus
 
 vmap <C-c> "+yi
@@ -151,6 +151,8 @@ autocmd! FileType c,cpp,java call CSyntaxAfter()
 autocmd! FileType sql call SQLSyntaxAfter()
 "
 "autocmd! FileType c,cpp,idl runtime syntax/doxygen.vim
+
+
 
 
 function! SQLSyntaxAfter()
