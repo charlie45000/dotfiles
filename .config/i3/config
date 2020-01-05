@@ -54,9 +54,6 @@ set $tr3 #000000A9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+Shift+a kill
 bindsym Mod1+F4 kill
@@ -131,8 +128,11 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+q focus parent
 
-# open root terminal (not working, not finished)d
-bindsym $mod+shift+t exec urxvt --role 'floating_urxvt' for_window [window_role='floating_urxvt$'] floating enable
+# open terminal
+bindsym $mod+shift+Return exec i3-sensible-terminal -name 'floating_term' +tr -e 'su'
+bindsym $mod+mod1+Return exec i3-sensible-terminal -name 'floating_term' +tr
+bindsym $mod+Return exec i3-sensible-terminal
+for_window [instance="floating_term"] floating enable, resize set 1000 500
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -205,7 +205,7 @@ assign [class="Spotify"] $workspace10
 assign [class="vlc"] $workspace10
 
 #x display manager
-for_window [class="Arandr"] floating enable, resize set height 500px, resize set width 1000px, move position center
+for_window [class="Arandr"] floating enable, resize set 1000 500, move position center
 bindsym $mod+p exec arandr
 
 #startup applications
@@ -287,9 +287,11 @@ client.urgent           $tr1    $tr2    $c01 	$tr1    	$tr1
 
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+XF86AudioMute exec --no-startup-id pavucontrol
+for_window [class="Pavucontrol"] floating enable, resize set 1000 500, move position center
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
