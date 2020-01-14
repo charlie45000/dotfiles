@@ -144,7 +144,7 @@
     stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = false 
+    hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
@@ -155,7 +155,7 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 16
+    max_icon_size = 64
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/legacy
@@ -278,7 +278,7 @@
     foreground = "#ebdbb2"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon 
+    #icon = /path/to/icon
 
 [urgency_normal]
     background = "#374e4f"
@@ -357,11 +357,19 @@
 #        If the notification is already drawn, it won't get undrawn.
 # pushback: same as delay, but when switching into fullscreen, the notification will get
 #           withdrawn from screen again and will get delayed like a new notification
-#[fullscreen_delay_everything]
-#    fullscreen = delay
-#[fullscreen_show_critical]
-#    msg_urgency = critical
-#    fullscreen = show
+[fullscreen_pushback_low]
+    msg_urgency = low
+    fullscreen = pushback
+[fullscreen_delay_normal]
+    msg_urgency = normal
+    fullscreen = delay
+[fullscreen_show_critical]
+    msg_urgency = critical
+    fullscreen = show
+
+[Spotify]
+    appname = "Spotify"
+    set_transient = yes
 
 #[espeak]
 #    summary = "*"
