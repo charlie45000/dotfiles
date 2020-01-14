@@ -18,9 +18,31 @@ endif
 if exists('skip_defaults_vim')
   finish
 endif
+if v:progpath == "/usr/bin/nvim"
+   if ! filereadable(expand('~/.config/vim/autoload/plug.vim'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ~/.config/vim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/vim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+   endif
+   call plug#begin('~/.config/nvim/plugged')
+   "autocmd VimEnter * :!echo a > /tmp/test.vim
+   Plug 'ying17zi/vim-live-latex-preview'
+   Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+   call plug#end()
+   "let g:livepreview_previewer = 'zathura'
+   "let no_tex_maps=1
 
-set runtimepath+=/home/paul/.config/vim,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,/home/paul/.config/vim/after
-set viminfo+=n~/.config/vim/viminfo
+   nmap , <LocalLeader>
+   "let maplocalleader = ","
+   set viminfo+=n~/.config/vim/viminfo
+else
+   set viminfo+=n~/.config/vim/viminfo.old
+endif
+
+set runtimepath+=~/.config/vim,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,~/.config/vim/after
+
+let mapleader = "!"
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -42,6 +64,7 @@ set history=200		" keep 200 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set wildmenu		" display completion matches in a status line
+set wildmode=full
 
 set ttimeout		" time out for key codes
 set ttimeoutlen=100	" wait up to 100ms after Esc for special key
@@ -51,7 +74,15 @@ set display=truncate
 
 " Show a few lines of context around the cursor.  Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
+set scrolloff=1
+
+" change default for splitting
+set splitbelow splitright
+
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -151,6 +182,10 @@ autocmd! FileType c,cpp,java call CSyntaxAfter()
 autocmd! FileType sql call SQLSyntaxAfter()
 "
 "autocmd! FileType c,cpp,idl runtime syntax/doxygen.vim
+"autocmd! Bufread,Bufnewfile *i3/config set filetype=i3
+
+autocmd! FileType sh,bash map <leader>s :!clear && shellcheck %<CR>
+autocmd BufWritePre * %s/\s\+$//e
 
 
 
@@ -161,7 +196,7 @@ function! SQLSyntaxAfter()
 	syntax match	_Bracket	"[\[\]();.,:?]"
 	syntax match	_Operator	"[-+&|<>=!\/~%&^*]"
 	syntax match	_Comment "--.*$" contains=@Spell
-	
+
 	hi link _Comment Comment
 	hi link _Bracket	Delimiter
 	hi link _Operator	Operator
@@ -193,5 +228,9 @@ au BufReadPost *.Xresources set syntax=xdefaults
 "auto cmd on file write
 autocmd BufWritePost *Xresources 	!xrdb ~/.Xresources
 autocmd BufWritePost *dunstrc		!dunstd restart
+
+"spellcheck
+map <F6> :set spell! spelllang=fr<CR>
+map <F7> :set spell! spelllang=en_us<CR>
 
 
