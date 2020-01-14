@@ -23,22 +23,25 @@ font pango:DejaVu Sans Mono 8
 # Set colors from Xresources
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources for some reason.
-set_from_resource $c00 i3wm.color0 #f0f0f0
-set_from_resource $c01 i3wm.color1 #f0f0f0
-set_from_resource $c02 i3wm.color2 #f0f0f0
-set_from_resource $c03 i3wm.color3 #f0f0f0
-set_from_resource $c04 i3wm.color4 #f0f0f0
-set_from_resource $c05 i3wm.color5 #f0f0f0
-set_from_resource $c06 i3wm.color6 #f0f0f0
-set_from_resource $c07 i3wm.color7 #f0f0f0
-set_from_resource $c08 i3wm.color8 #f0f0f0
-set_from_resource $c09 i3wm.color9 #f0f0f0
-set_from_resource $c10 i3wm.color10 #f0f0f0
-set_from_resource $c11 i3wm.color11 #f0f0f0
-set_from_resource $c12 i3wm.color12 #f0f0f0
-set_from_resource $c13 i3wm.color13 #f0f0f0
-set_from_resource $c14 i3wm.color14 #f0f0f0
-set_from_resource $c15 i3wm.color15 #f0f0f0i
+set_from_resource $c00 i3wm.color0	#f0f0f0
+set_from_resource $c01 i3wm.color1	#f0f0f0
+set_from_resource $c02 i3wm.color2	#f0f0f0
+set_from_resource $c03 i3wm.color3	#f0f0f0
+set_from_resource $c04 i3wm.color4	#f0f0f0
+set_from_resource $c05 i3wm.color5	#f0f0f0
+set_from_resource $c06 i3wm.color6	#f0f0f0
+set_from_resource $c07 i3wm.color7	#f0f0f0
+set_from_resource $c08 i3wm.color8	#f0f0f0
+set_from_resource $c09 i3wm.color9	#f0f0f0
+set_from_resource $c10 i3wm.color10	#f0f0f0
+set_from_resource $c11 i3wm.color11	#f0f0f0
+set_from_resource $c12 i3wm.color12	#f0f0f0
+set_from_resource $c13 i3wm.color13	#f0f0f0
+set_from_resource $c14 i3wm.color14	#f0f0f0
+set_from_resource $c15 i3wm.color15	#f0f0f0
+set_from_resource $xbg i3wm.background	#f0f0f0
+set_from_resource $xfg i3wm.foreground	#f0f0f0
+
 set $tr1 #00000079
 set $tr2 #000000A9
 set $tr3 #000000A9
@@ -197,6 +200,14 @@ bindsym Mod1+control+Tab exec $I3C/more-wksp.sh go
 bindsym $mod+Shift+w exec $I3C/more-wksp.sh move
 bindsym $mod+Mod1+w exec $I3C/more-wksp.sh move-go
 
+#display wallpaper directory
+bindsym $mod+control+w exec sxiv -N 'set_workspace' -t -g 1000x500 $HOME/Wallpapers/*
+for_window [instance="set_workspace"] floating enable
+
+#move/show scratchpad
+bindsym $mod+x move scratchpad
+bindsym $mod+shift+x scratchpad show
+
 #workspace assignement
 assign [class="firefox"] $workspace2
 #assign [class="Rhythmbox"] $workspace10
@@ -213,6 +224,8 @@ bindsym $mod+p exec arandr
 #exec discord
 #exec firefox
 exec dunstd start
+exec battd start
+exec fehbg start
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -262,36 +275,45 @@ client.urgent           $tr1    $tr2    $c01 	$tr1    	$tr1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
+bar {
 #		SETUP FOR THE NORMAL STATUS BAR
 #
-#        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-#	font pango: MaterialDesignIcons 11
-#
-#	colors {
-#		set $bg-color 	         #2f343f
-#		set $inactive-bg-color   #2f343f
-#		set $text-color          #f3f4f5
-#		set $inactive-text-color #676E7D
-#		set $urgent-bg-color 	 #E53935
-#				
-#		background $bg-color
-#	    	separator #757575
-#		#                  border             background         text
-#		focused_workspace  $bg-color          $bg-color          $text-color
-#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#	}
-#	position top
-#}
+	i3bar_command i3bar
+	modifier mod1
+#        status_command i3blocks
+        status_command i3status
+ #-c $HOME/.config/i3/i3blocks.conf
+	font pango: MaterialDesignIcons 11
+
+	colors {
+		set $bg-color 	         #2f343f
+		set $inactive-bg-color   #2f343f
+		set $text-color          #f3f4f5
+		set $inactive-text-color #676E7D
+		set $urgent-bg-color 	 #E53935
+
+		background $bg-color
+	    	separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+	position bottom
+	#verbose true
+	mode invisible
+	id bar-0
+}
 
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+XF86AudioMute exec --no-startup-id pavucontrol
-for_window [class="Pavucontrol"] floating enable, resize set 1000 500, move position center
+bindsym $mod+XF86AudioMute exec --no-startup-id i3-sensible-terminal -name 'floating_term' +tr -e 'pulsemixer'
+
+# Network control
+bindsym $mod+F7 exec --no-startup-id i3-sensible-terminal -name 'floating_term' +tr -e 'nmtui'
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
@@ -305,7 +327,7 @@ bindsym mod1+shift+o exec playerctl --player=spotify stop
 bindsym mod1+m exec playerctl next
 bindsym mod1+shift+m exec playerctl --player=spotify next
 bindsym mod1+j exec playerctl previous
-bindsym mod1+shift+j exec playerctl --player=spotify previous 
+bindsym mod1+shift+j exec playerctl --player=spotify previous
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec $I3C/toggletouchpad.sh # toggle touchpad
@@ -318,18 +340,56 @@ bindsym Mod1+l exec $I3C/lock.sh > /tmp/lockauto.log
 exec_always eval $HOME/.fehbg
 
 # disable window titlebars
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 2
 bindsym $mod+shift+b border pixel 0
 bindsym $mod+b border pixel 2
 focus_on_window_activation urgent
 
-#startup setup
-exec_always numlockx on
-exec_always compton -f
-exec xrdb $HOME/.Xresources
-exec_always xset -b -dpms  +fp $HOME/.fonts/,$HOME/.fonts/misc/,$HOME/.fonts/ohsnap/,$HOME/.fonts/tewi,$HOME/.fonts/terminesspowerline/
-	
 bar {
-#        status_command i3status
-	 i3bar_command $I3C/lemonbar/i3_lemonbar.py
+#       default general config
+	id bar-1
+#	mode dock #currently not supported
+#	hidden_state hide # currently not supported
+	position top
+	workspace_buttons yes
+	strip_workspace_numbers no
+	strip_workspace_name no
+	binding_mode_indicator yes
+	modifier $mod
+
+#	commands
+	i3bar_command "$I3C/lemonbar/i3_lemonbar.py -t ,[c0]#000000,"
+#	i3bar_command bar
+
+#	font (the first is used for the text and the other for the icons)
+	set_from_resource $genfont bar.font	-xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1
+	set_from_resource $icofont bar.iconfont	-xos4-terminusicons2mono-medium-r-normal--12-120-72-72-m-60-iso8859-1
+	font "$genfont,$icofont"
+	#font $icofont
+
+#	separators used by the bar.separated by commas
+#	#powerline separators (warnig: make sure that the end of each line is empty):.
+		set $sep_right 
+		set $sep_left 
+		set $sep_l_right 
+		set $sep_l_left 
+	separator_symbol "$sep_left,$sep_right"
+
+	colors {
+ 	background	"[5F]$xbg"
+	statusline	$xfg
+	#separator
+	#focused_background
+	#focused_status_line
+	#focused_separator
+
+#	class name		border		background	text
+	focused_workspace	"[C0]$xbg"	"[C0]$xbg"	$xfg
+	#active_workspace
+	inactive_workspace	"[90]$xbg"	"[90]$xbg"	$c07
+	urgent_workspace	"[90]$c01"	"[90]$c01"	$c07
+	binding_mode		"[A0]$xbg"	"[A0]$xbg"	$c01
+	}
 }
+
+# vim:filetype=i3
