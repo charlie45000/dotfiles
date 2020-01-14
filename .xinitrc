@@ -1,7 +1,14 @@
 #
 # ~/.xinitrc
 #
-[ -f ~/.profile.d/shared_export.sh ] && source ~/.profile.d/shared_export.sh
+
+. "$HOME/.profile"
+
+#startup setup
+numlockx on
+xrdb $HOME/.Xresources
+xset -b -dpms  +fp $HOME/.fonts/,$HOME/.fonts/misc/,$HOME/.fonts/ohsnap/,$HOME/.fonts/tewi,$HOME/.fonts/terminesspowerline/
+picom -f &
 
 #complete env
 export SEARCH_ENGINE="duckduckgo.com"

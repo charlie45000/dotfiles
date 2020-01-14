@@ -14,7 +14,7 @@ hextoterm() {
 		R=$((16#${C::2}))
 		G=$((16#${C:2:2}))
 		B=$((16#${C:4:2}))
-		printf '\e[48;2;%d;%d;%d;30m #%s ' $R $G $B "$C"	
+		printf '\e[48;2;%d;%d;%d;30m #%s ' $R $G $B "$C"
 	done
 	printf "\e[m\n"
 	#tput oc
@@ -26,13 +26,15 @@ alias SS='sudo systemctl'
 alias SP='sudo pacman'
 alias urxvt='export LD_PRELOAD=;PROMPT_COMMAND="POMPT_COMMAND=;LD_PRELOAD=$HOME/.local/lib/libstderred.so";urxvt'
 
-#i3 config env var
+#config folders env var
 export I3C="$HOME/.config/i3"
 
-#alias for git config
-alias wmc='cd $HOME/.config/i3'
-
 #dotfiles management
+alias wmc='cd $HOME/.config/i3'
+alias vc='cd $HOME/.config/vim'
+alias mc='cd $HOME/.config/mutt'
+
+#alias for git config
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 complete -F _git config
 
@@ -58,8 +60,11 @@ source /etc/bash_completion.d/git-flow-completion.bash
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/bash-completion/bash_completion
 
-#stderr color
-#export LD_PRELOAD="$HOME/.local/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 
 #move vim to .config dir
 export VIMINIT="source ~/.config/vim/vimrc"
+
+export HISTCONTROL=ignoreboth:erasedups
+
+#temporary solution to Path duplication:
+#source $HOME/.profile.d/shared_export.sh
