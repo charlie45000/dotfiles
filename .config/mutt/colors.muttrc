@@ -33,6 +33,7 @@ color sidebar_highlight red default
 color sidebar_divider brightblack default
 #color sidebar_flagged red black
 color sidebar_new brightcolor250 default
+color sidebar_spoolfile brightcolor250 default
 color normal brightyellow default
 color error red default
 color tilde black default
@@ -52,6 +53,7 @@ color signature brightgreen default
 color bold black default
 color underline black default
 color normal default default
+color progress black cyan
 
 # Regex highlighting:
 color header blue default ".*"

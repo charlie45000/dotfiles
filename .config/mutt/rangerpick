@@ -1,0 +1,15 @@
+#!/bin/sh
+
+tmpfile="/tmp/rangerpick"
+if [ -z "$1" ]; then
+	ranger --choosefiles $tmpfile
+#	old=$(sed 's|.*/||;1i\#do you want to change the file(s) name(s)(if you want delete an attached file put "d/" at the begining of the line)?' $tmpfile)
+#	new=$(echo "$old" | vipe)
+#	if [ "$new" -ne "$old" ]; then
+#		for line in $tmpfile; do
+#			cp $line 
+#	sed 's/
+      	[ $? = 1 ] && sed -i 's/^/<attach-file>"/' $tmpfile && sed -i 's/$/"<enter>/' $tmpfile && sed -i ':a;N;$!ba;s/\\n//g' $tmpfile && sed -i 's/^/push /' $tmpfile
+elif [ "$1" = "clean" ]; then
+  rm $tmpfile
+fi

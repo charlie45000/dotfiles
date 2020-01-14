@@ -1,0 +1,26 @@
+#!/bin/sh
+
+begin="$1"
+end="$4"
+
+desc="$2"
+file="$3"
+
+max=$5
+
+
+if [ $(printf "$file" | wc -c) -gt $max ]; then
+	fe="..."
+fi
+
+if [ "$desc" = "$file" ]; then
+	#echo $desc > /tmp/test.mutt
+	
+	echo "$begin%.${max}f$fe%> $end%"
+else
+	
+	if [ $(printf "$desc" | wc -c) -gt $max ]; then
+		de="..."
+	fi
+	echo "$begin%.${max}d$de (%.${max}f$fe)%> $end%"
+fi
