@@ -10,7 +10,7 @@ URxvt.transparent: 		true
 URxvt.shading: 			65
 
 URxvt.depth:			32
-!URxvt.background:		[40]#back
+URxvt.background:		[80]#back
 
 URxvt.secondaryScreen:		1
 URxvt.secondaryScroll:		0
