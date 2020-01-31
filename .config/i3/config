@@ -217,15 +217,17 @@ assign [class="vlc"] $workspace10
 
 #x display manager
 for_window [class="Arandr"] floating enable, resize set 1000 500, move position center
-bindsym $mod+p exec arandr
+bindsym $mod+p exec disp_manager
+bindsym $mod+mod1+p exec disp_manager "home"
+bindsym $mod+shift+p exec disp_manager "dp"
 
 #startup applications
 #exec gtk-launch discord.desktop
 #exec discord
 #exec firefox
 exec dunstd start
-exec battd start
-exec fehbg start
+#exec battd start
+#exec fehbg start
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
