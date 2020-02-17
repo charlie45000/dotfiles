@@ -26,6 +26,8 @@ alias SS='sudo systemctl'
 alias SP='sudo pacman'
 alias urxvt='export LD_PRELOAD=;PROMPT_COMMAND="POMPT_COMMAND=;LD_PRELOAD=$HOME/.local/lib/libstderred.so";urxvt'
 
+complete -F SP pacman
+
 #config folders env var
 export I3C="$HOME/.config/i3"
 
@@ -64,6 +66,7 @@ source /usr/share/bash-completion/bash_completion
 #move vim to .config dir
 export VIMINIT="source ~/.config/vim/vimrc"
 
+#do not keep duplicates in bash command history
 export HISTCONTROL=ignoreboth:erasedups
 
 #temporary solution to Path duplication:

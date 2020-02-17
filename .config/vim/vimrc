@@ -28,7 +28,7 @@ if v:progpath == "/usr/bin/nvim"
    call plug#begin('~/.config/nvim/plugged')
    "autocmd VimEnter * :!echo a > /tmp/test.vim
    Plug 'ying17zi/vim-live-latex-preview'
-   Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+   "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
    call plug#end()
    "let g:livepreview_previewer = 'zathura'
    "let no_tex_maps=1
