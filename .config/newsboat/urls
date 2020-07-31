@@ -1,0 +1,21 @@
+#Luke Smith
+https://lukesmith.xyz/rss.xml "Lsmith"
+https://videos.lukesmith.xyz/feeds/videos.atom "Lsmith" "videos"
+
+#archlinux forum
+https://bbs.archlinux.org/extern.php?action=feed&tid=257725&type=atom "archlinux" "forum"
+https://bbs.archlinux.org/extern.php?action=feed&tid=257748&type=atom "archlinux" "forum"
+
+#other videos
+https://skeptikon.fr/feeds/videos.atom "videos"
+https://skeptikon.fr/feeds/videos.xml?videoChannelId=314 "videos"
+
+#Zeste de Savoir
+https://zestedesavoir.com/tutoriels/flux/rss/ "zds"
+https://zestedesavoir.com/articles/flux/rss/ "zds"
+https://zestedesavoir.com/forums/flux/messages/rss/ "zds" "forum"
+https://zestedesavoir.com/billets/flux/rss/ "zds"
+#https://zestedesavoir.com/forums/flux/messages/rss/?forum=1 "zds" forum"
+https://zestedesavoir.com/forums/flux/sujets/rss/ "zds" "forum"
+
+#https://github.com/jsmnbom/mpris-integration/issues/9.atom
