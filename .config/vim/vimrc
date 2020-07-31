@@ -184,6 +184,10 @@ autocmd! FileType sql call SQLSyntaxAfter()
 "autocmd! FileType c,cpp,idl runtime syntax/doxygen.vim
 "autocmd! Bufread,Bufnewfile *i3/config set filetype=i3
 
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile *.glos set syntax=tex
+
 autocmd! FileType sh,bash map <leader>s :!clear && shellcheck %<CR>
 autocmd BufWritePre * %s/\s\+$//e
 
