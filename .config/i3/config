@@ -226,7 +226,7 @@ bindsym $mod+shift+p exec disp_manager "dp"
 #exec discord
 #exec firefox
 exec dunstd start
-#exec battd start
+exec battd start
 #exec fehbg start
 
 # reload the configuration file
@@ -280,12 +280,12 @@ client.urgent           $tr1    $tr2    $c01 	$tr1    	$tr1
 bar {
 #		SETUP FOR THE NORMAL STATUS BAR
 #
+	id bar-0
 	i3bar_command i3bar
-	modifier mod1
-#        status_command i3blocks
-        status_command i3status
- #-c $HOME/.config/i3/i3blocks.conf
-	font pango: MaterialDesignIcons 11
+	modifier none
+        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf | tee /tmp/i3blocks.log
+#        status_command i3status
+
 
 	colors {
 		set $bg-color 	         #2f343f
@@ -303,10 +303,12 @@ bar {
 	}
 	position bottom
 	#verbose true
-	mode invisible
-	id bar-0
+	mode dock
+	binding_mode_indicator yes
+	separator_symbol ""
 }
 
+	bindsym mod1+h bar mode toggle bar-0
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -378,19 +380,19 @@ bar {
 	separator_symbol "$sep_left,$sep_right"
 
 	colors {
- 	background	"[5F]$xbg"
-	statusline	$xfg
-	#separator
-	#focused_background
-	#focused_status_line
-	#focused_separator
+		background	"[5F]$xbg"
+		statusline	$xfg
+		#separator
+		#focused_background
+		#focused_status_line
+		#focused_separator
 
-#	class name		border		background	text
-	focused_workspace	"[C0]$xbg"	"[C0]$xbg"	$xfg
-	#active_workspace
-	inactive_workspace	"[90]$xbg"	"[90]$xbg"	$c07
-	urgent_workspace	"[90]$c01"	"[90]$c01"	$c07
-	binding_mode		"[A0]$xbg"	"[A0]$xbg"	$c01
+		#class name		border		background	text
+		focused_workspace	"[C0]$xbg"	"[C0]$xbg"	$xfg
+		#active_workspace
+		inactive_workspace	"[90]$xbg"	"[90]$xbg"	$c07
+		urgent_workspace	"[90]$c01"	"[90]$c01"	$c07
+		binding_mode		"[A0]$xbg"	"[A0]$xbg"	$c01
 	}
 }
 
