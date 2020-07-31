@@ -1,0 +1,35 @@
+#!/bin/bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+name=battd
+PID=$(pidof -xo %PPID "$HOME/scripts/refresh_batt")
+
+start__daemon() {
+	$HOME/scripts/refresh_batt &
+}
+
+case "$1" in
+	start)
+		stat_busy "Starting $name daemon"
+		[ -z "$PID" ] &&start__daemon \
+			&& stat_done \
+			|| { stat_fail; exit 1; }
+		;;
+	stop)
+		stat_busy "Stopping $name daemon"
+		[ -n "$PID" ] && kill $PID >/dev/null \
+			&& stat_done \
+			|| { stat_fail; echo $PID; exit 1; }
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+	*)
+	echo "usage: $0 {start|stop|restart|reload}"
+	;;
+esac
+exit 0

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+	printf "usage: latex_find_command [command]\n"
+fi
+
+{ find /usr -name '*.sty'; } 2>/dev/null \
+| while read -r file; do
+	up=$(grep "[\\]$1[^a-zA-Z]" "$file")
+	if [ -n "$up" ]; then
+		printf "%s\n%s\n\n" "$file" "$up"
+	fi
+done

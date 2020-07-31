@@ -20,7 +20,7 @@ case "$1" in
 		;;
 	stop)
 		stat_busy "Stopping $name daemon"
-		[ -n "$PID" ] && kill "$PID" >/dev/null \
+		[ -n "$PID" ] && kill $PID >/dev/null \
 			&& stat_done \
 			|| { stat_fail; exit 1; }
 		;;
