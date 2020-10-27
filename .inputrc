@@ -1,0 +1,38 @@
+#set editing-mode vi
+set show-mode-in-prompt on
+set colored-stats on
+set menu-complete-display-prefix on
+set skip-completed-text on
+
+#set meta-flag on
+#set input-meta on
+#set convert-meta on
+#set output-meta on
+
+TAB: old-menu-complete
+Control-Q: dump-variables
+Control-E: "\C-x\C-a"
+Control-A: re-read-init-file
+Control-G: "\|\grep "
+
+# Change cursors for both modes.
+# [0  - blinking block.
+# [1  - blinking block (default).
+# [2  - steady block.
+# [3  - blinking underline.
+# [4  - steady underline.
+# [5  - blinking bar (xterm).
+# [6  - steady bar (xterm).
+set vi-cmd-mode-string "\1\e[2 q\2"
+set vi-ins-mode-string "\1\e[6 q\2"
+set emacs-mode-string "\1\e[4 q\e[s\e[1200C\e[6D{emacs}\e[u\2"
+
+$if mode=vi
+Control-X: emacs-editing-mode
+$else
+Control-X: vi-editing-mode
+$endif
+
+# reload the inputrc:
+# bind -f ~/.inpurtc
+

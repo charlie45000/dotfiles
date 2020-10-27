@@ -37,7 +37,7 @@ alias vc='cd $HOME/.config/vim'
 alias mc='cd $HOME/.config/mutt'
 
 #alias for git config
-alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cache/dotfiles_git_raw --work-tree=$HOME'
 complete -F _git config
 
 #sudo completion and editing
@@ -68,6 +68,12 @@ export VIMINIT="source ~/.config/vim/vimrc"
 
 #do not keep duplicates in bash command history
 export HISTCONTROL=ignoreboth:erasedups
+
+#set input mode vi
+export INPUTRC="$HOME/.inputrc"
+bind -f $INPUTRC
+set -o vi
+bind -f $INPUTRC
 
 #temporary solution to Path duplication:
 #source $HOME/.profile.d/shared_export.sh
