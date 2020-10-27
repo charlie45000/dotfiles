@@ -7,6 +7,9 @@
 ! Defaults for rofi
 #include ".Xresources.d/rofi.Xresources"
 
+! Defauts for i3
+!#include ".Xresources.d/i3wm.Xresources"
+
 ! Defauts for lemonbar (used by custom prog)
 #include ".Xresources.d/bar.Xresources"
 
