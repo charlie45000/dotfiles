@@ -341,6 +341,9 @@ bindsym mod1+shift+j exec playerctl --player=spotify previous
 # Touchpad controls
 bindsym XF86TouchpadToggle exec $I3C/toggletouchpad.sh # toggle touchpad
 
+#password Store
+bindsym control+p exec passmenu -l 20
+
 #lock screen
 bindsym Mod1+l exec $I3C/lock.sh > /tmp/lockauto.log
 
