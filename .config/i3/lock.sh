@@ -13,7 +13,7 @@ BEGIN {
 	split(screen[2], y, \"x\");
 	x_i = offset[2]+screen[1]/2
 	y_i = offset[3]+y[2]/2
-	if(!dup[x_i, y_i]++){
+	if(!dup[offset[2], offset[3]]++){
 		center[i, 1] = x_i;
 		center[i, 2] = y_i;
 		i++;
@@ -36,5 +36,6 @@ END {
 "
 scrot -o "$tmpbg"
 result=$( (xrandr --listactivemonitors && identify "$I3C"/lock.png) | awk -v icon="$icon" "$awk")
+echo $result
 eval "convert $tmpbg -scale 10% -scale 1000% $result $tmpbg"
 [ "$1" != "--dryrun" ] && i3lock -i "$tmpbg"
