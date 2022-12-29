@@ -7,6 +7,8 @@ color index_subject cyan default '.*'
 
 # New mail is boldened:
 color index bold color130 default "~N"
+color index_author bold red default "~N"
+color index_subject bold cyan default "~N"
 
 
 # Tagged mail is highlighted:
@@ -21,12 +23,18 @@ color index_flags standout color130 default "~F"
 #color index underline bold color130 default "~N~F"
 color index_flags standout bold color130 default "~F"
 
+#mail with attachment
+#color index_flags color129 default "~X 1-"
+#color index_flags bold color129 default "~N~X 1-"
+#color index_flags standout bold color129 default "~F~X 1-"
+
 
 # Other colors and aesthetic settings:
 mono bold bold
 mono underline underline
 mono indicator reverse
 mono error bold
+mono index bold "~N"
 color normal default default
 color indicator brightblack white
 color sidebar_highlight red default

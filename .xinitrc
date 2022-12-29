@@ -18,5 +18,15 @@ export TERMINAL="urxvt"
 #avoid having terminal prompt in red
 export LD_PRELOAD=
 
+#Toolbar for anthy
+ibus-daemon -dr
+# Settings for Japanese input
+export GTK_IM_MODULE='ibus'
+export QT_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
+
+#Toolbar for anthy
+ibus-daemon -drx
+
 #temporary
 i3

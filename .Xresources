@@ -13,7 +13,7 @@
 ! Defauts for lemonbar (used by custom prog)
 #include ".Xresources.d/bar.Xresources"
 
-*font:           		xft:LiberationMonoforPowerline:size=11
+*font:           		xft:LiberationMonoforPowerline:size=12
 
 ! Default colors configuration.
 

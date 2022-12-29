@@ -9,7 +9,7 @@ set skip-completed-text on
 #set convert-meta on
 #set output-meta on
 
-TAB: old-menu-complete
+#TAB: old-menu-complete
 Control-Q: dump-variables
 Control-E: "\C-x\C-a"
 Control-A: re-read-init-file

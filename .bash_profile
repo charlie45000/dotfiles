@@ -29,3 +29,5 @@ unset appendload
 #else
 #    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
 #fi
+
+if [ -e /home/paul/.nix-profile/etc/profile.d/nix.sh ]; then . /home/paul/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

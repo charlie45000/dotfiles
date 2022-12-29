@@ -38,7 +38,8 @@ alias mc='cd $HOME/.config/mutt'
 
 #alias for git config
 alias config='/usr/bin/git --git-dir=$HOME/.cache/dotfiles_git_raw --work-tree=$HOME'
-complete -F _git config
+#complete -F _git config
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main config
 
 #sudo completion and editing
 complete -cf sudo
@@ -77,3 +78,8 @@ bind -f $INPUTRC
 
 #temporary solution to Path duplication:
 #source $HOME/.profile.d/shared_export.sh
+
+# Settings for Japanese input
+export GTK_IM_MODULE='ibus'
+export QT_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
