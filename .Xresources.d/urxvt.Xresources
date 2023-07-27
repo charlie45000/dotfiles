@@ -1,34 +1,36 @@
-URxvt.scrollBar:      		false
-URxvt.perl-lib:			home/.config/urxvt/ext
-URxvt.url-launcher:		home/.config/urxvt/handlelink.sh
-URxvt*loginShell:		true
-URxvt*fading:			20
-URxvt.internalBorder:		0
-URxvt.externalBorder:		0
-URxvt.blurRadius: 		10
-URxvt.transparent: 		true
-URxvt.shading: 			65
+URxvt.perl-lib:                home/.config/urxvt/ext
+URxvt.url-launcher:            home/.config/urxvt/handlelink.sh
+URxvt*loginShell:              true
+URxvt*fading:                  20
+URxvt.internalBorder:          0
+URxvt.externalBorder:          0
+URxvt.blurRadius:              10
+URxvt.transparent:             true
+URxvt.shading:                 65
 
-URxvt.depth:			32
-URxvt.background:		[80]#back
+URxvt.depth:                   32
+URxvt.background:              [80]#back
 
-URxvt.secondaryScreen:		1
-URxvt.secondaryScroll:		0
+URxvt.secondaryScreen:         1
+URxvt.secondaryScroll:         0
+URxvt.scrollBar:               false
+URxvt.saveLines:               10000
 
-URxvt.perl-ext-common:		default,matcher,resize-font
-URxvt.matcher.button:		1
-!				Resize font in URxvt
-URxvt.keysym.C-KP_Add:		resize-font:bigger
-URxvt.keysym.C-KP_Subtract:	resize-font:smaller
-URxvt.keysym.C-End:		resize-font:reset
+URxvt.perl-ext-common:         default,matcher,resize-font
+URxvt.matcher.button:          1
+!        Resize font in URxvt
+URxvt.keysym.C-KP_Add:         resize-font:bigger
+URxvt.keysym.C-KP_Subtract:    resize-font:smaller
+URxvt.keysym.C-End:            resize-font:reset
 
-URxvt.iso14755:			False
-URxvt.keysym.Shift-Control-C:	perl:clipboard:copy
-URxvt.keysym.Shift-Control-V:	perl:clipboard:paste
-URxvt.clipboard.copycmd: 	xsel -ib
-URxvt.clipboard.pastecmd:	xsel -ob
+URxvt.iso14755:                True
+URxvt.iso14755_52:             True
+URxvt.keysym.Shift-Control-C:  perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:  perl:clipboard:paste
+URxvt.clipboard.copycmd:       xsel -ib
+URxvt.clipboard.pastecmd:      xsel -ob
 
-!				used for groff rendering (mainly used for man)
-URxvt.colorIT:      #87af5f
-URxvt.colorBD:      #d78700
-URxvt.colorUL:      #87afd7
+!        Used for groff rendering (mainly used for man)
+URxvt.colorIT:                 #87af5f
+URxvt.colorBD:                 #d78700
+URxvt.colorUL:                 #87afd7

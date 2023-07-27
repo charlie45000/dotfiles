@@ -23,8 +23,10 @@ hextoterm() {
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias SS='sudo systemctl'
+alias SU='systemctl --user'
 alias SP='sudo pacman'
 alias urxvt='export LD_PRELOAD=;PROMPT_COMMAND="POMPT_COMMAND=;LD_PRELOAD=$HOME/.local/lib/libstderred.so";urxvt'
+alias yay='yay -a'
 
 complete -F SP pacman
 
@@ -35,9 +37,10 @@ export I3C="$HOME/.config/i3"
 alias wmc='cd $HOME/.config/i3'
 alias vc='cd $HOME/.config/vim'
 alias mc='cd $HOME/.config/mutt'
+alias rc='cd $HOME/.config/ranger'
 
 #alias for git config
-alias config='/usr/bin/git --git-dir=$HOME/.cache/dotfiles_git_raw --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 #complete -F _git config
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main config
 

@@ -325,6 +325,8 @@ bindsym $mod+XF86AudioMute exec --no-startup-id i3-sensible-terminal -name 'floa
 bindsym $mod+F7 exec --no-startup-id i3-sensible-terminal -name 'floating_term' +tr -e 'nmtui'
 
 # Sreen brightness controls
+bindsym $mod+XF86MonBrightnessDown exec xbacklight -set 5 # set screen brightness to "minimum" value
+bindsym $mod+XF86MonBrightnessUp exec xbacklight -set 100 # set screen brigthness to maximum value
 bindsym XF86MonBrightnessUp exec xbacklight +5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -5 # decrease screen brightness
 

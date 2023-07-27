@@ -29,10 +29,18 @@ if v:progpath == "/usr/bin/nvim"
    "autocmd VimEnter * :!echo a > /tmp/test.vim
    Plug 'ying17zi/vim-live-latex-preview'
    "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+   Plug 'LnL7/vim-nix'
+   Plug 'hjson/vim-hjson'
+   Plug 'sheerun/vim-polyglot'
+   Plug 'fmoralesc/vim-tutor-mode'
+   Plug 'nvim-lua/plenary.nvim'
+   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+   Plug 'nvim-treesitter/nvim-treesitter'
    call plug#end()
    "let g:livepreview_previewer = 'zathura'
    "let no_tex_maps=1
 
+   let mapleader = "!"
    nmap , <LocalLeader>
    "let maplocalleader = ","
    set viminfo+=n~/.config/vim/viminfo
@@ -41,8 +49,6 @@ else
 endif
 
 set runtimepath+=~/.config/vim,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,~/.config/vim/after
-
-let mapleader = "!"
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -83,6 +89,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
+
+" diff between two files
+nmap <A-d>  :if &diff<CR>diffoff<CR>set nocrb<CR>else<CR>diffthis<CR>endif<CR><CR>
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -186,13 +195,14 @@ autocmd! FileType sql call SQLSyntaxAfter()
 
 " Set the filetype based on the file's extension, overriding any
 " 'filetype' that has already been set
-au BufRead,BufNewFile *.glos set syntax=tex
+au BufRead,BufNewFile *.glos set filetype=tex
+au BufRead,BufNewFile *.tex set filetype=tex
+au BufRead,BufNewFile *.inc set syntax=asm
+au BufRead,BufNewFile *.c.kat,*.h.kat set syntax=c
+au BufNewFile,BufRead /*.rasi setf css
 
-autocmd! FileType sh,bash map <leader>s :!clear && shellcheck %<CR>
+autocmd! FileType sh,bash map <LocalLeader>s :!clear && shellcheck %<CR>
 autocmd BufWritePre * %s/\s\+$//e
-
-
-
 
 function! SQLSyntaxAfter()
 	syntax keyword Boolean true false NULL TRUE FALSE
@@ -233,8 +243,10 @@ au BufReadPost *.Xresources set syntax=xdefaults
 autocmd BufWritePost *Xresources 	!xrdb ~/.Xresources
 autocmd BufWritePost *dunstrc		!dunstd restart
 
-"spellcheck
+" Spellcheck
+autocmd! FileType md,rst,tex setlocal spell
 map <F6> :set spell! spelllang=fr<CR>
 map <F7> :set spell! spelllang=en_us<CR>
+nnoremap <leader>s <cmd>Telescope spell_suggest<cr>
 
 

@@ -7,7 +7,7 @@
 #startup setup
 numlockx on
 xrdb $HOME/.Xresources
-xset -b -dpms  +fp $HOME/.fonts/,$HOME/.fonts/misc/,$HOME/.fonts/ohsnap/,$HOME/.fonts/tewi,$HOME/.fonts/terminesspowerline/
+xset -b -dpms  +fp $XDG_DATA_HOME/fonts/,$XDG_DATA_HOME/fonts/misc/,$XDG_DATA_HOME/fonts/terminesspowerline/
 picom &
 
 #complete env
@@ -19,7 +19,7 @@ export TERMINAL="urxvt"
 export LD_PRELOAD=
 
 #Toolbar for anthy
-ibus-daemon -dr
+#ibus-daemon -dr
 # Settings for Japanese input
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'

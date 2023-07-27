@@ -6,7 +6,7 @@ answer=$(printf "Restart i3\nExit i3\nSuspend\nHibernate\nReboot\nShutdown" | ro
 
 [ "$answer" = "Exit i3" ] && i3-msg exit
 [ "$answer" = "Restart i3" ] && i3-msg restart
-[ "$answer" = "Suspend" ] && sleep 0.15 && "$I3C"/lock.sh && systemctl suspend
-[ "$answer" = "Hibernate" ] && sleep 0.15 && "$I3C"/lock.sh && systemctl hibernate
+[ "$answer" = "Suspend" ] && sleep 0.30 && "$I3C"/lock.sh && systemctl suspend
+[ "$answer" = "Hibernate" ] && sleep 0.30 && "$I3C"/lock.sh && systemctl hibernate
 [ "$answer" = "Reboot" ] && systemctl reboot
 [ "$answer" = "Shutdown" ] && systemctl poweroff
