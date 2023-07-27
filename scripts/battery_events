@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Maybe add that in udev config later when battery go below X%
+#dbus-send --system --type=method_call \
+#		--dest=org.freedesktop.UPower \
+#		/org/freedesktop/UPower/devices/battery_BAT0 \
+#		org.freedesktop.UPower.Device.Refresh
+
+#{ inotifywait -me access /sys/class/power_supply/BAT0/uevent; } | while read line; do
+
+# Works fine with some sys filesystem. udevadm is more portable
+# (no battery path, no inotify, ...) and juste works
+#{ inotifywait -me access /sys/class/power_supply/BAT0/uevent; } | while read line; do
+{ udevadm monitor -us power_supply; } | while read line; do
+	sleep 1
+	pkill -SIGRTMIN+1 i3blocks
+done
+

@@ -287,8 +287,8 @@ bar {
 	id bar-0
 	i3bar_command i3bar
 	modifier none
-        status_command i3blocks -c $HOME/.config/i3/i3blocks.conf | tee /tmp/i3blocks.log
-#        status_command i3status
+	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf | tee /tmp/i3blocks.log
+	font pango:Font Awesome 6 Free Regular 10, DejaVu Sans Mono 10
 
 
 	colors {

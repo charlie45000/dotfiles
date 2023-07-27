@@ -1,0 +1,10 @@
+[Unit]
+Description=Script daemon to ping i3blocks on battery event
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'exec $HOME/scripts/battery_events'
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

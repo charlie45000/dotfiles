@@ -1,57 +1,60 @@
 #!/bin/sh
 
-round(){
-    printf "%.${2}f" "${1}"
+# TODO:
+#   - make the signal daemon
+
+render_text() {
+    left=$(echo "scale=5; $1/($current)*3600" | bc -q)
+    time=$(date -u --date @$left +%H:%M)
+    echo " ($time)"
 }
-icon="/usr/share/icons/Adwaita/64x64/status/battery-level-90-symbolic.symbolic.png"
+
 pow_dir="/sys/class/power_supply/$_bat"
-current=$(cat $pow_dir/energy_now)
-time_now=$(date +%s)
-power=$(cat $pow_dir/power_now)
+current=$(cat $pow_dir/current_now)
+power=$(cat $pow_dir/charge_now)
+full=$(cat "$pow_dir/charge_full")
+percentage="$(cat $pow_dir/capacity)"
+charging_state=$(cat "$pow_dir/status")
+RET_VAL=0
 
-#if [ "$_last_time" -ne -1 ]; then
-    export LC_NUMERIC="en_US.UTF-8"
-    full=$(cat "$pow_dir/energy_full")
-    #r=" ("
-    #l=")"
-    case "$button" in
-        3) factory=$(cat "$pow_dir/energy_full_design")
-            notify-send -i "$icon" -u low "Battery $_bat:" "Last full capacity:\\n$(echo "scale=1; $full*100/$factory" | bc -q)%"
-            ;;
-    esac
-
-    #if [ "$_last_power" -ne "$power_now" ]; then
-        #timedec="scale=5; ($time_now-$_last_time)/($_last_power-$current)*($current)"
-        #timech="scale=5; ($time_now-$_last_time)/($current-$_last_power)*($full-$current)"
-#    else
-#        time_now=$((2*$_last_time-$time_now))
-#        time_now=$_last_time
-#        timedec="$_last_left"
-#        timech="$_last_left"
-#    fi
-#fi
-        timedec="scale=5; ($current)/($power)*3600"
-        timech="scale=5; ($full-$current)/($power)*3600"
-
-case "$(cat "$pow_dir/status")" in
-    "Charging")
-        left="$(echo "$timech" | bc -q)"
-        r=" ("
-        l=")"
-        ;;
-    "Discharging")
-        left="$(echo "$timedec" | bc -q)"
-        r=" ("
-        l=")"
+export LC_NUMERIC="en_US.UTF-8"
+case "$button" in
+    3)
+        icon="$status_dir/battery-level-90-symbolic.symbolic.png"
+        factory=$(cat "$pow_dir/charge_full_design")
+        last_full="$(echo "scale=1; $full*100/$factory" | bc -q)%"
+        body="Last full capacity:\\n$last_full"
+        notify-send -i "$icon" -u low "Battery $_bat:" "$body"
         ;;
 esac
-percentage="$(cat $pow_dir/capacity)%"
-pow="$percentage$r$(date -u --date @$left +%H:%M)$l"
-echo "$left $(round "$left" 0)" >>/tmp/test
 
 
+case "$charging_state" in
+    "Charging")
+        text=$(render_text "($full-$power)")
+        label="\uE55B"
+        ;;
+    "Discharging")
+        text=$(render_text "$power")
+        label="\uE560"
+        [ $percentage -le 10 ] && RET_VAL=33 #activates urgent
+        ;;
+    "Full")
+        label="\uE55C"
+        ;;
+    "Not charging")
+        label="\uE55F"
+        [ $percentage -le 10 ] && RET_VAL=33 #activates urgent
+        ;;
+    *)
+        label="\uE55D"
+        text=" ($charging_state)"
+esac
 
-echo "{\"full_text\": \"$pow\"}"
-#echo "{\"full_text\": \"$pow\", \"_last_power\": \"$current\", \"_last_time\": \"$time_now\", \"_last_left\": \"$left\"}">>/tmp/test
+pow="$percentage%$text"
+label="<span>$label </span>"
+echo -e "{\"full_text\": \"$pow\", \"short_text\": \"$percentage%\", \"label\": \"$label\"}"
+
+exit $RET_VAL
 
 # vim: ft=sh tabstop=4 shiftwidth=4 expandtab smartindent

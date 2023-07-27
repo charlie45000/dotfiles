@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# TODO:
+#   - add icon
+#   - add button to open a calendar
+
+export LC_NUMERIC="en_US.UTF-8"
+
+while true; do
+    date=$(date +%d-%m-%Y)
+    time=$(date +%H:%M)
+    seconds=$(date +%S)
+
+    case "$seconds" in
+        "00")
+            SLEEP_TIME=60
+            ;;
+        *)
+            SLEEP_TIME="$(echo "60-$seconds" | bc -q)"
+            ;;
+    esac
+
+    echo "{\"full_text\": \"$date $time\", \"short_text\": \"$time\"}"
+
+    sleep $SLEEP_TIME
+done
+
+# vim: ft=sh tabstop=4 shiftwidth=4 expandtab smartindent
