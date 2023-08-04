@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# If not started from an environment already having it:
+# export LANG="en_US.UTF-8"
+
+
+get_default_sink_nb() {
+	default_symb=$(pactl get-default-sink)
+	sed_default_sink_partern='s/^\(\([0-9]\+\)\s*'$default_symb'\).*/\2/p'
+	default_nb=$(pactl list short sinks | sed -n "$sed_default_sink_partern")
+	echo $default_nb
+}
+
+SED_SUBSCRIBE_PATERN='s/^.*sink #\([0-9]\+\)$/\1/p;s/^.*\(server\).*$/\1/p'
+
+default=$(get_default_sink_nb)
+
+# sed 'u' option is used to flush after evry lines. otherwise the buffer flushes
+# after a long while. This option seems to be GNU only (didn't find a better way
+# to do it, but ther is probably a solution...
+{ pactl subscribe | sed -nu "$SED_SUBSCRIBE_PATERN"; } | while read line; do
+	case $line in
+		"server")
+			new_default=$(get_default_sink_nb)
+			if [ $new_default == $default ]; then
+				continue
+			fi
+			default=$new_default
+			;&
+		$default )
+			pkill -SIGRTMIN+2 i3blocks
+			;;
+		*)
+			continue
+			;;
+	esac
+done
+

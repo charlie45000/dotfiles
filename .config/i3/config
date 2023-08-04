@@ -227,10 +227,8 @@ bindsym $mod+shift+p exec disp_manager "dp"
 
 #startup applications
 #exec gtk-launch discord.desktop
-#exec discord
-#exec firefox
-exec dunstd start
-exec battd start
+#exec dunstd start
+#exec battd start
 #exec fehbg start
 
 # reload the configuration file

@@ -1,0 +1,10 @@
+[Unit]
+Description=Script daemon to resize background when output changes
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'exec $HOME/scripts/fehbg'
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

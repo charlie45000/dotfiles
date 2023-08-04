@@ -28,5 +28,8 @@ export XMODIFIERS=@im='ibus'
 #Toolbar for anthy
 ibus-daemon -drx
 
+# For graphical daemons
+systemctl --user import-environment DISPLAY
+
 #temporary
 i3

@@ -1,0 +1,85 @@
+#!/bin/sh
+
+set -x
+set -e
+
+export LANG="en_US.UTF-8"
+RET_CODE=0
+
+extract_volumes() {
+    SED_PATERN='^.*( ([0-9]+)%).*( ([0-9]+)%).*$'
+    #SED_FORMAT='print ((\2+\4)\/2),"%-\2% \/ \4%"'
+    ret=$(pactl -fjson get-$1-volume $2 | \
+        sed -En 's/'"$SED_PATERN"'/print ((\2+\4)\/2),"%-\2% \/ \4%"/p' | bc -q)
+    echo $ret
+}
+
+extract_name() {
+    default=$(pactl get-default-$1 )
+    name=$(pactl list ${1}s | sed -n "/Name: $default/{n;s/^.*: \(.*\)$/\1/p}")
+    echo "$name"
+}
+
+get_color() {
+    echo $(i3-msg -t get_bar_config $bar_id | jq -r ".colors.$1_workspace_text")
+}
+
+# TODO:
+#   - monitor line : pactl subscribe | sed -n '/sink/p'
+#   - execute only once, never returns (to avoid setting up a daemon monitoring
+#     and sending sink number to block)? (probably not)
+#   - be sur that a default sink change triggers a update on the monitoring
+#   - to get sink name for notifications : get the number of default sink
+
+[ "$_active_color" == "None" ] && _active_color="$(get_color focused)"
+[ "$_inactive_color" == "None" ] && _inactive_color="$(get_color inactive)"
+
+vols=$(extract_volumes "sink" "@DEFAULT_SINK@")
+IFS=- read output_mean out_vols <<< $vols
+
+case "$button" in
+    1)
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+        ;;
+    2)
+        $TERMINAL -name 'floating_term' +tr -e 'pulsemixer' &
+        ;;
+    3)
+        out="$(extract_name sink)"
+        in="$(extract_name source)"
+
+        vols=$(extract_volumes "source" "@DEFAULT_SOURCE@")
+        IFS=- read input_mean in_vols <<< $vols
+        vol_icon=audio-volume-high-symbolic.symbolic
+        mic_icon=microphone-sensitivity-high-symbolic.symbolic
+
+        notify-send -i "$vol_icon" -u low "$out" "$out_vols"
+        notify-send -i "$mic_icon" -u low "$in" "$in_vols"
+        ;;
+    4)
+        pactl set-sink-volume @DEFAULT_SINK@ +5%
+        ;;
+    5)
+        pactl set-sink-volume @DEFAULT_SINK@ -5%
+        ;;
+esac
+
+muted=$(pactl get-sink-mute @DEFAULT_SINK@ | cut -d' ' -f2)
+
+if [ "$muted" == "yes" ]; then
+    color="$_inactive_color"
+    label="\uf6a9"
+else
+    color="$_active_color"
+    label="\uf028"
+fi
+
+echo \
+"{\"full_text\": \"$output_mean\",\
+ \"label\": \"<span>$label </span>\",\
+ \"color\": \"$color\",\
+ \"_active_color\": \"$_active_color\",\
+ \"_inactive_color\": \"$_inactive_color\"\
+}"
+
+# vim: ft=sh tabstop=4 shiftwidth=4 expandtab smartindent

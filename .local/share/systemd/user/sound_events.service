@@ -1,0 +1,11 @@
+[Unit]
+Description=Script daemon to ping i3blocks on sound event
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'exec $HOME/scripts/sound_events'
+Restart=on-failure
+Environment="LANG=en_US.UTF-8"
+
+[Install]
+WantedBy=default.target

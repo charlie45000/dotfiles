@@ -241,7 +241,7 @@ au BufReadPost *.Xresources set syntax=xdefaults
 
 "auto cmd on file write
 autocmd BufWritePost *Xresources 	!xrdb ~/.Xresources
-autocmd BufWritePost *dunstrc		!dunstd restart
+autocmd BufWritePost *dunstrc		!systemctl --user restart dunst
 
 " Spellcheck
 autocmd! FileType md,rst,tex setlocal spell

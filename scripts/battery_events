@@ -6,8 +6,6 @@
 #		/org/freedesktop/UPower/devices/battery_BAT0 \
 #		org.freedesktop.UPower.Device.Refresh
 
-#{ inotifywait -me access /sys/class/power_supply/BAT0/uevent; } | while read line; do
-
 # Works fine with some sys filesystem. udevadm is more portable
 # (no battery path, no inotify, ...) and juste works
 #{ inotifywait -me access /sys/class/power_supply/BAT0/uevent; } | while read line; do

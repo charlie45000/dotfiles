@@ -38,4 +38,10 @@ scrot -o "$tmpbg"
 result=$( (xrandr --listactivemonitors && identify "$I3C"/lock.png) | awk -v icon="$icon" "$awk")
 echo $result
 eval "convert $tmpbg -scale 10% -scale 1000% $result $tmpbg"
-[ "$1" != "--dryrun" ] && i3lock -i "$tmpbg"
+if [ "$1" != "--dryrun" ]; then
+	#pkill -SIGUSR1 dunst
+	dunsctl set-paused true
+	i3lock -nei "$tmpbg"
+	#pkill -SIGUSR2 dunst
+	dunsctl set-paused false
+fi
