@@ -40,8 +40,9 @@ echo $result
 eval "convert $tmpbg -scale 10% -scale 1000% $result $tmpbg"
 if [ "$1" != "--dryrun" ]; then
 	#pkill -SIGUSR1 dunst
-	dunsctl set-paused true
-	i3lock -nei "$tmpbg"
+	dunstctl set-paused true
+	i3lock -nei "$tmpbg" &
+	[ -n "$COMMAND" ] && eval "$COMMAND"
 	#pkill -SIGUSR2 dunst
-	dunsctl set-paused false
+	dunstctl set-paused false
 fi
