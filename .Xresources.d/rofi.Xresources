@@ -4,7 +4,7 @@ rofi.eh:			2
 rofi.font:			DejaVu Sans 12
 rofi.monitor:			-1
 rofi.location:			2
-rofi.columns:			1	
+rofi.columns:			1
 rofi.lines:			5
 rofi.width:			40
 
@@ -18,6 +18,5 @@ rofi.color-active:		transparent,	#lbl,	transparent,	transparent,	#drd
 rofi.color-window:		#rofbg,	#back,	#lbk
 
 !				general configuration:
-rofi.cache-dir:			home/.cache/rofi
 rofi.max-history-size:		50
 

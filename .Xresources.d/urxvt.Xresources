@@ -18,6 +18,8 @@ URxvt.saveLines:               10000
 
 URxvt.perl-ext-common:         default,matcher,resize-font
 URxvt.matcher.button:          1
+
+URxvt.cutchars:                "\\ ‘\"'&()*,;<=>?@[]ˆ{|}[]:"
 !        Resize font in URxvt
 URxvt.keysym.C-KP_Add:         resize-font:bigger
 URxvt.keysym.C-KP_Subtract:    resize-font:smaller
