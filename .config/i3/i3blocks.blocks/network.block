@@ -1,0 +1,100 @@
+#!/bin/sh
+
+set -x
+set -e
+
+export LANG="en_US.UTF-8"
+RET_CODE=0
+VPN_NAME="kronosafe"
+VPN_PASS="Kronosafe/outlook"
+
+extract_active() {
+    DEFAULT_PATERN='^((\s?[^ ]+)+\s+)(-?[a-f0-9]+|UUID)+\s+(\w+\s+\w+).*$'
+    DEFAULT_FORMAT='\1\4'
+    SED_PATERN=${1:-$DEFAULT_PATERN}
+    SED_FORMAT=${2:-$DEFAULT_FORMAT}
+    ret=$(nmcli con show --active --order type | \
+          sed -En 's/'"$SED_PATERN"'/'$SED_FORMAT'/p')
+    printf "$ret"
+}
+
+extract_active_name() {
+    PATERN='^((\s?[^ ]+)+)\s+(-?[a-f0-9]+)+\s+(\w+)\s+\w+.*$'
+    #FORMAT='\1\/\4'
+    FORMAT='\4'
+    printf "$(extract_active "$PATERN" "$FORMAT")"
+}
+
+has_type() {
+    printf "%s\n" "$1" | while read line; do
+        if [ "$line" == "$2" ]; then
+            echo yes
+            exit
+        fi
+    done
+}
+
+generate_net_line() {
+    if [ -n "$1" ]; then
+        echo -n "<span color=\\\"$_active_color\\\">\u$2</span>"
+    else
+        echo -n "<span color=\\\"$_inactive_color\\\">\u$2</span>"
+    fi
+}
+
+get_color() {
+    echo $(i3-msg -t get_bar_config $bar_id | jq -r ".colors.$1_workspace_text")
+}
+
+# TODO:
+#   - monitor line : pactl subscribe | sed -n '/sink/p'
+#   - execute only once, never returns (to avoid setting up a daemon monitoring
+#     and sending sink number to block)? (probably not)
+#   - be sur that a default sink change triggers a update on the monitoring
+#   - to get sink name for notifications : get the number of default sink
+
+[ "$_active_color" == "None" ] && _active_color="$(get_color focused)"
+[ "$_inactive_color" == "None" ] && _inactive_color="$(get_color inactive)"
+
+vpn=$(nmcli con show --active id $VPN_NAME)
+#IFS=- read output_mean out_vols <<< $vols
+
+case "$button" in
+    1)
+        if [ -z "$vpn" ]; then
+            pass $VPN_PASS | head -n 1 | nmcli --ask con up id $VPN_NAME > /dev/null
+        else
+            nmcli con down id $VPN_NAME > /dev/null
+        fi
+        ;;
+    2)
+        $TERMINAL -name 'floating_term' +tr -e 'nmtui' &
+        ;;
+    3)
+        active=$(extract_active)
+        net_icon=network-cellular-signal-good-symbolic
+
+        notify-send -i "$net_icon" -u low "Active networks" "$active"
+        ;;
+    *)
+        break
+        ;;
+esac
+
+active=$(extract_active_name)
+vpn=$(generate_net_line "$(has_type "$active" "vpn")" "f233")
+wifi=$(generate_net_line "$(has_type "$active" "wifi")" "f1eb")
+eth=$(generate_net_line "$(has_type "$active" "ethernet")" "f796")
+
+#label="\uf0ac" # globe
+label="\uf6ff"  # network_wired
+
+
+echo \
+"{\"full_text\": \"$eth|$wifi|$vpn\",\
+ \"label\": \"<span>$label</span>   \",\
+ \"_active_color\": \"$_active_color\",\
+ \"_inactive_color\": \"$_inactive_color\"\
+}"
+
+# vim: ft=sh tabstop=4 shiftwidth=4 expandtab smartindent

@@ -1,0 +1,11 @@
+[Unit]
+Description=Script daemon to ping i3blocks on network_manager events
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'exec $HOME/scripts/network_events'
+Restart=on-failure
+Environment="LANG=en_US.UTF-8"
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# If not started from an environment already having it:
+# export LANG="en_US.UTF-8"
+
+SED_SUBSCRIBE_PATERN='/^[a-z0-9]+: (connected|disconnected|connection profile removed).*$/p'
+
+# sed 'u' option is used to flush after evry lines. otherwise the buffer flushes
+# only after a long while. This option seems to be GNU only (didn't find a
+# better way to do it, but ther is probably a solution...)
+{ nmcli monitor | sed -nuE "$SED_SUBSCRIBE_PATERN"; } | while read line; do
+	pkill -SIGRTMIN+3 i3blocks
+done
+

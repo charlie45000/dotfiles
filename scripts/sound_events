@@ -16,8 +16,8 @@ SED_SUBSCRIBE_PATERN='s/^.*sink #\([0-9]\+\)$/\1/p;s/^.*\(server\).*$/\1/p'
 default=$(get_default_sink_nb)
 
 # sed 'u' option is used to flush after evry lines. otherwise the buffer flushes
-# after a long while. This option seems to be GNU only (didn't find a better way
-# to do it, but ther is probably a solution...
+# only after a long while. This option seems to be GNU only (didn't find a
+# better way to do it, but ther is probably a solution...)
 { pactl subscribe | sed -nu "$SED_SUBSCRIBE_PATERN"; } | while read line; do
 	case $line in
 		"server")

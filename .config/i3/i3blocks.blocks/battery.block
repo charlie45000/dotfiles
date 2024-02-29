@@ -20,7 +20,7 @@ RET_VAL=0
 export LC_NUMERIC="en_US.UTF-8"
 case "$button" in
     3)
-        icon="battery-level-90-symbolic.symbolic"
+        icon="battery-level-90-symbolic"
         factory=$(cat "$pow_dir/charge_full_design")
         last_full="$(echo "scale=1; $full*100/$factory" | bc -q)%"
         body="Last full capacity:\\n$last_full"

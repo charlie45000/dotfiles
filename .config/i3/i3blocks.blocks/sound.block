@@ -50,8 +50,8 @@ case "$button" in
 
         vols=$(extract_volumes "source" "@DEFAULT_SOURCE@")
         IFS=- read input_mean in_vols <<< $vols
-        vol_icon=audio-volume-high-symbolic.symbolic
-        mic_icon=microphone-sensitivity-high-symbolic.symbolic
+        vol_icon=audio-volume-high-symbolic
+        mic_icon=microphone-sensitivity-high-symbolic
 
         notify-send -i "$vol_icon" -u low "$out" "$out_vols"
         notify-send -i "$mic_icon" -u low "$in" "$in_vols"
